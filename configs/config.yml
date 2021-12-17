@@ -1,0 +1,61 @@
+config_path: '/home/zoukai/project/perception_code/tool/iscas_model_analyze_system/configs/config.yml'
+diff_idx_to_name:
+  0: 'easy'
+  1: 'moderate'
+  2: 'hard'
+
+##---------------------##
+##--Evalation methods--##
+##---------------------##
+
+CLASS_EVAL: True
+CLASS_NAME: ['Car','Pedestrian','Cyclist','Van','Truck','Person_sitting','Tram', 'Misc','DontCare'] # All possible class names
+CURRENT_CLASS: ['Car','Pedestrian','Cyclist']
+MERGE_CLASS: 
+  smallcar: ['Car']
+  bigcar: ['Van','Truck','Tram']
+  nocar: ['Pedestrian','Person_sitting','Cyclist']
+  allcls: ['Car','Van','Truck','Tram', 'Pedestrian','Person_sitting','Cyclist']
+MIN_IOU_THRESH: [0.7,0.5,0.5,0.7,0.7,0.5,0.5,0.5,0.5]  
+MARKER_THRESH: [0.0,0.0,0.0,0.0,0.0,0.0,0.0] ## threshs for each class mentioned above including merged classes.
+
+##True: eval every difficulty
+DIFFICULTY_EVAL: True
+DIFFICULTY: [0, 1, 2]
+## kitti difficulty
+DIFFICULTY_CONFIG:
+  occlusion: [0,1,1]
+  truncation: [0.15,0.3,0.5]
+  height: [40.0,25.0,25.0]
+
+
+##True: eval every scene
+SCENE_EVAL: False
+
+##Data Path settings
+EVAL_LIST: "/home/zoukai/project/data/kitti/tool/training/val_label_list.txt"
+
+##Groundtruth location
+GT_ANNO :
+  ROOT_PATH: "/home/zoukai/project/data/kitti/tool/training/test_label"
+  TYPE: 'GT'
+
+## Detection location
+DT_ANNO :
+  ROOT_PATH: "/home/zoukai/project/data/kitti/tool/training/test_detection/data"
+  TYPE : 'DT'
+
+IOU_OPT : 0 #iou opt: -1:intersect/union. 0;intersect/GT,1:intersect/DT
+DEBUG: False
+DEBUG_FRAME_NUM: 3
+NUM_TREHSH_SAMPLE : 11 # how many point for ploting
+
+
+##
+## Result CSV Name
+RESULT_ROOT : 
+RESULT_FILE : '/result.csv'
+# RESULT_FILE_PR : '/pr.csv'
+# RESULT_FILE_BBOX : '/bbox.csv'
+# RESULT_FILE_FRAME: '/corner_case.csv'
+# RESULT_CONFUSION_MATRIX: '/confusion_matrix.csv'
